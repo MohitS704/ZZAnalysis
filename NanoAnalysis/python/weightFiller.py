@@ -132,21 +132,20 @@ class weightFiller(Module):
             exit(1)
 
         if self.APPLY_K_NNLOQCD_NLOEW_ZZQQB:
-            LHEMela_costhetastar = Collection("LHE_Mela").costhetastar
             KFactor_ZZQQB_Nominal = self.evalSpline(
-                LHEMela_costhetastar,event.GenZZ_mass, 0
+                event.LHEMela_costhetastar,event.GenZZ_mass, 0
             )
             KFactor_ZZQQB_QCD_up = self.evalSpline(
-                LHEMela_costhetastar,event.GenZZ_mass, 1
+                event.LHEMela_costhetastar,event.GenZZ_mass, 1
             )
             KFactor_ZZQQB_QCD_dn = self.evalSpline(
-                LHEMela_costhetastar,event.GenZZ_mass, 2
+                event.LHEMela_costhetastar,event.GenZZ_mass, 2
             )
             KFactor_ZZQQB_EW_factor = self.evalSpline(
-                LHEMela_costhetastar,event.GenZZ_mass, 3
+                event.LHEMela_costhetastar,event.GenZZ_mass, 3
             )
             KFactor_ZZQQB_smooth_factor = self.evalSpline(
-                LHEMela_costhetastar,event.GenZZ_mass, 4
+                event.LHEMela_costhetastar,event.GenZZ_mass, 4
             )
 
 
