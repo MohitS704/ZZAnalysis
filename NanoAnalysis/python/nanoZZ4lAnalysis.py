@@ -46,11 +46,10 @@ APPLYJETCORR = getConf("APPLYJETCORR", True) # apply jet corrections
 MUON_ID_BYMVA = getConf("MUON_ID_BYMVA", False) # if false - standard selection for muons ; if true - new WP (Muon_mvalowPt > -0.6, sip < 8, no iso)
 # ggH NNLOPS weight
 APPLY_QCD_GGF_UNCERT = getConf("APPLY_QCD_GGF_UNCERT", False)
-# K factors for ggZZ (and old NLO ggH samples) 0:None; 1: NNLO/LO; 2: NNLO/NLO; 3: NLO/LO
+# K factors for ggZZ (and old NLO ggH samples) 0:None; 1: NNLO/LO; 2: NNLO/NLO
 APPLY_K_NNLOQCD_ZZGG = getConf("APPLY_K_NNLOQCD_ZZGG", 0)
 # K factors for qqZZ
-APPLY_K_NNLOQCD_ZZQQB = getConf("APPLY_K_NNLOQCD_ZZQQB", False)
-APPLY_K_NNLOEW_ZZQQB  = getConf("APPLY_K_NNLOEW_ZZQQB", False)
+APPLY_K_NNLOQCD_NLOEW_ZZQQB = getConf("APPLY_K_NNLOQCD_ZZQQB", False)
 # Add separate tree with gen info for all events
 
 IsSIGNAL = getConf("IsSIGNAL", False)
@@ -250,7 +249,7 @@ if IsMC:
 
     # Weights computation, to be placed in pre or post sequences based on the configuration
     from ZZAnalysis.NanoAnalysis.weightFiller import weightFiller
-    weights = weightFiller(XSEC, APPLY_K_NNLOQCD_ZZGG, APPLY_K_NNLOQCD_ZZQQB, APPLY_K_NNLOEW_ZZQQB, APPLY_QCD_GGF_UNCERT, LEPTON_SETUP)
+    weights = weightFiller(XSEC, APPLY_K_NNLOQCD_ZZGG, APPLY_K_NNLOQCD_NLOEW_ZZQQB, APPLY_QCD_GGF_UNCERT, LEPTON_SETUP)
     
     #Protect against writing a bunch of 1's. 
     if (genXS != 1) and (genBR != 1): 
